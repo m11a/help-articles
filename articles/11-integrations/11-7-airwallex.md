@@ -20,7 +20,8 @@ Before connecting Airwallex to Light, you'll need:
 
 1. An active Airwallex account
 2. Your Client ID and API Key from the Airwallex dashboard (see [Airwallex documentation](https://www.airwallex.com) for how to retrieve them)
-3. At least one Airwallex bank account created in Light
+3. The API Key must be either an Admin Key or a Scoped Key with the Scale/Account read permission granted
+4. At least one Airwallex bank account created in Light
 
 To create an Airwallex bank account in Light:
 
