@@ -29,7 +29,7 @@ Light provides native integrations with popular platforms:
 - HubSpot: Sync deals, contacts, companies
 
 **FP&A**:
-- Abacum: Sync actuals for budget-to-actual analysis and financial planning
+- Abacum: Sync ERP data via S3 bucket for financial planning and analysis
 
 **HRM & Payroll**:
 - Finch: Sync headcount, payroll data, company structure
