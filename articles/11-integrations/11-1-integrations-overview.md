@@ -28,6 +28,9 @@ Light provides native integrations with popular platforms:
 - Salesforce: Sync opportunities, accounts, contacts
 - HubSpot: Sync deals, contacts, companies
 
+**FP&A**:
+- Abacum: Sync ERP data via S3 bucket for financial planning and analysis
+
 **HRM & Payroll**:
 - Finch: Sync headcount, payroll data, company structure
 
@@ -237,4 +240,5 @@ Light supports webhooks for:
 - [Microsoft Teams integration](11-5-microsoft-teams.md)
 - [Stripe integration](11-6-stripe.md)
 - [HRM integration (Finch)](11-8-hrm-finch.md)
+- [Abacum integration](11-18-abacum.md)
 - [API access and custom integrations](11-12-api-access.md)
