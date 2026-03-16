@@ -1,13 +1,13 @@
 # Accounting Document Types and Lifecycle
 
-All financial transactions in Light flow through a unified accounting document system. This article explains the document types and their lifecycle from creation to archival.
+All financial activity in Light flows through a unified accounting document system. Accounting documents are **mutable** records that can be edited throughout their lifecycle. When posted, each accounting document generates one or many **immutable** transactions on the general ledger. This article explains the document types and their lifecycle from creation to archival.
 
 [Open in Light →](https://app.light.inc/accounting-documents)
 
 
 ## Accounting Document Concept
 
-An "accounting document" is any financial transaction that posts to the ledger:
+An accounting document is a mutable record that, when posted, generates one or many immutable transactions on the general ledger. The following are all types of accounting documents:
 
 - Invoice Payables (vendor bills)
 - Invoice Receivables (customer invoices)
@@ -19,7 +19,7 @@ An "accounting document" is any financial transaction that posts to the ledger:
 - Year-End Closing Entries (period close entries)
 - Credit Notes (AP and AR credits)
 
-Each document type has domain-specific fields but follows the same posting lifecycle.
+Each document type has domain-specific fields but follows the same posting lifecycle. Regardless of type, the accounting document itself remains mutable—you can edit it at any stage—while the transactions it generates on the ledger are always immutable.
 
 ## Document Structure
 
@@ -118,9 +118,9 @@ DRAFT → POSTED → (PARTIALLY_CLEARED) → CLEARED → ARCHIVED
 - Not visible in financial reports
 
 **POSTED State:**
-- Document has posted to the ledger
-- GL transactions created and immutable
-- Can still be modified (via reversal + re-posting)
+- Accounting document has posted to the ledger
+- One or many immutable GL transactions have been created
+- The accounting document can still be edited—the system automatically reverses the original transactions and creates new ones (see [Immutable ledger and audit trail](/mnt/help-articles/articles/05-general-ledger/5-7-immutable-ledger.md))
 - Visible in financial reports
 - Can be cleared as transactions are matched
 
@@ -151,26 +151,26 @@ When a document posts to the ledger:
 3. **Line expansion** - Multi-line documents expanded into individual GL entries
 4. **Tax calculation** - Tax amounts calculated and posted to tax accounts
 5. **FX conversion** - Multi-currency amounts converted to local/group currencies
-6. **GL posting** - All entries posted to ledger_transaction_line table
+6. **GL posting** - All entries posted to ledger_transaction_line table as immutable transactions
 7. **Status change** - Document status changes from DRAFT to POSTED
 
-Posting is atomic—either all transactions post or none do. Partial posts are not possible.
+Posting is atomic—either all transactions post or none do. Partial posts are not possible. Once posted, the resulting transactions on the ledger are immutable and cannot be edited or deleted.
 
 > Good to know: Posting typically takes 1-5 seconds. For bulk operations, timing may vary.
 
 ## Modifying Posted Documents
 
-To modify a document that's already posted:
+Because accounting documents are mutable, you can edit them even after posting. The transactions on the ledger, however, are immutable—they are never changed or deleted. Instead, the accounting document engine handles corrections automatically:
 
 1. Document status must be POSTED, PARTIALLY_CLEARED, or CLEARED
 2. Click **Modify**
 3. System automatically:
    - Reverses all clearings and matched entries
-   - Reverses the original posting (sets status to DRAFT)
-   - Applies your modifications
-   - Re-posts with new amounts
+   - Reverses the original immutable transactions (creates new offsetting entries)
+   - Applies your modifications to the accounting document
+   - Posts new immutable transactions with the updated amounts
    - Reapplies clearings
-4. Document is now modified with updated GL transactions
+4. The accounting document now reflects your changes, and the ledger contains a complete, immutable record of both the original and corrected transactions
 
 Modifying is safer than manual reversals because it's atomic—all steps succeed or all fail.
 
@@ -262,7 +262,7 @@ Documents can have multiple line items:
 - Line 2: Labor, GL account, amount, tax
 - Line 3: Shipping, GL account, amount, tax
 
-When posted, each line posts to its GL account, creating multiple ledger transactions.
+When posted, each line posts to its GL account, creating multiple immutable ledger transactions. A single accounting document can therefore generate many transactions on the general ledger.
 
 ## Custom Properties
 
