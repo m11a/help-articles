@@ -9,6 +9,7 @@ Gmail is Google's email platform used by millions of businesses. Light's Gmail i
 The Gmail integration enables:
 
 - **Automatic receipt fetching**: Light scans your company's Gmail accounts for emailed receipts related to card transactions
+- **Manual receipt forwarding**: Team members can forward receipt emails to your company's dedicated inbox at `$company_name@receipts.light.inc` to have them matched to card transactions
 - **AI-powered receipt matching**: Receipts are analyzed using AI to extract merchant name, transaction amount, and date, then matched to the corresponding card transaction
 - **Auto-populated accounting**: Once a receipt is matched, Light automatically fills in the ledger account, tax code, and custom properties on the transaction
 - **Company-wide setup**: An admin connects and activates the integration once for the entire company — no action required from individual team members
@@ -43,6 +44,20 @@ Once the integration is activated:
 5. When a match is found, the receipt is attached to the transaction and accounting fields are auto-populated — including ledger account, tax code, and any custom properties
 
 This runs automatically in the background. Your team doesn't need to manually upload receipts or fill in transaction details for matched spend.
+
+## Forwarding receipts manually
+
+In addition to automatic fetching, team members can forward receipt emails directly to Light for matching:
+
+1. Forward any receipt email to `$company_name@receipts.light.inc` (replace `$company_name` with your company's Light subdomain)
+2. Light receives the forwarded email and extracts receipt data using AI
+3. The receipt is matched to the corresponding card transaction based on merchant, amount, and date
+4. Once matched, accounting fields are auto-populated on the transaction
+
+This is useful when:
+- A receipt email wasn't automatically detected
+- You receive receipts on a personal email account
+- You want to ensure a specific receipt is processed immediately
 
 ## Reviewing matched receipts
 
