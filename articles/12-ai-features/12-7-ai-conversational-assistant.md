@@ -128,7 +128,7 @@ You can attach files directly to your LCI messages using the paperclip button in
    - "Match these transactions to the right accounts" *(bank statement or expense export)*
    - "Set up these employees as users" *(HR export)*
 
-**Limits:** Up to 10 files per message, maximum 100 MB per file.
+**Limits:** Up to 10 files per message, maximum 10 MB per file.
 
 Attachments are saved in the thread history so you can refer back to them in follow-up messages. The AI can also reference files uploaded earlier in the same conversation — you don't need to re-upload them.
 
